@@ -5,7 +5,7 @@ const app = express();
 const PORT = process.env.PORT || 80;
 
 app.use((req, res, next) => {
-  console.log(req.body);
+  console.log(req);
   next();
 });
 
