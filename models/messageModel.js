@@ -24,6 +24,5 @@ const messageSchema = new Schema({
 });
 
 // creats a model for the 'species' collection that will be part of the export
-const Message = mongoose.model('chat', messageSchema);
 
 module.exports = messageSchema;
