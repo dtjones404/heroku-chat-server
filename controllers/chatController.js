@@ -1,6 +1,7 @@
 const fetch = (...args) =>
   import('node-fetch').then(({ default: fetch }) => fetch(...args));
-const Message = require('../models/messageModel.js');
+const mongoose = require('mongoose');
+const messageSchema = require('../models/messageModel.js');
 const chatController = {};
 
 chatController.getMessages = async (req, res, next) => {
@@ -12,6 +13,7 @@ chatController.getMessages = async (req, res, next) => {
       res.locals.messages = await response.json();
       next();
     } else {
+      const Message = mongoose.model(req.params.room, messageSchema);
       const response = await Message.find({});
       response.reverse();
       res.locals.messages = response;
@@ -48,6 +50,7 @@ chatController.postMessage = async (req, res, next) => {
       res.locals.message = await response.json();
       next();
     } else {
+      const Message = mongoose.model(req.params.room, messageSchema);
       const messageData = { ...req.body, created_at: String(new Date()) };
       const newMessage = await Message.create(messageData);
       res.locals.message = [messageData];
