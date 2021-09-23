@@ -5,7 +5,6 @@ const app = express();
 const PORT = process.env.PORT || 80;
 
 app.use(express.json());
-app.use(cors());
 
 app.get('/:room', chatController.getMessages, (req, res) => {
   return res.json(res.locals.messages);
