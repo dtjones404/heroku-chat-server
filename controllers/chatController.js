@@ -43,7 +43,7 @@ chatController.postMessage = async (req, res, next) => {
           method: 'POST',
           body: JSON.stringify(req.body),
           headers: {
-            'Content-Type': 'application.json',
+            'Content-Type': 'application/json',
           },
         }
       );
