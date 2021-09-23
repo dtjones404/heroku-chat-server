@@ -24,6 +24,7 @@ chatController.getMessages = async (req, res, next) => {
 };
 
 chatController.postMessage = async (req, res, next) => {
+  console.log(req.body);
   if (!req.body || !req.body.message || !req.body.created_by) {
     return next({
       log: `chatController.postMessage ERROR: Malformed request body.`,
