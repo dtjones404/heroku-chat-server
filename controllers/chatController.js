@@ -12,7 +12,9 @@ chatController.getMessages = async (req, res, next) => {
       res.locals.messages = await response.json();
       next();
     } else {
-      res.locals.messages = await Message.find({});
+      const response = await Message.find({});
+      response.reverse();
+      res.locals.messages = response;
       next();
     }
   } catch (err) {

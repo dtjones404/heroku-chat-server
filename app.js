@@ -4,11 +4,6 @@ const cors = require('cors');
 const app = express();
 const PORT = process.env.PORT || 80;
 
-const logger = (req, res, next) => {
-  console.log(req);
-  next();
-};
-
 app.use(express.json());
 app.use(cors());
 
@@ -18,7 +13,7 @@ app.get('/:room', chatController.getMessages, (req, res) => {
   return res.json(res.locals.messages);
 });
 
-app.post('/:room', logger, chatController.postMessage, (req, res) => {
+app.post('/:room', chatController.postMessage, (req, res) => {
   return res.json(res.locals.message);
 });
 
