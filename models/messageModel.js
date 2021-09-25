@@ -1,7 +1,6 @@
 const mongoose = require('mongoose');
 
-const MONGO_URI =
-  'mongodb+srv://dtjones:5dCBQX4KNM2SChEK@cluster0.qwh31.mongodb.net/myFirstDatabase?retryWrites=true&w=majority';
+const MONGO_URI = process.env.DATABASE_URL;
 
 mongoose
   .connect(MONGO_URI, {
